@@ -1,0 +1,23 @@
+name: LAB 3 - Secrets and Variables
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  part1_environment_variable:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Print Production Environment Variable
+        run: echo "The environment variable is ${{ vars.MY_ENVIORMENT }}"
+
+  part2_repository_secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Repository Secret
+        run: |
+          # Note: GitHub will automatically mask secrets in the logs with ***
+          echo "The secret user is: ${{ secrets.JB_DEMO_USER }}"
